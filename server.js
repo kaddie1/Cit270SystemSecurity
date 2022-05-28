@@ -64,10 +64,14 @@ app.get('/', (request, response)=>
 
 app.post('/login', validatePassword);
 
-const signup =(request, response)
+const signup =async (request, response) =>
 {
+    const requestHashedPassword = md5 (request.body.password); // hashing password
+    const userName= request.body.userName; // getting username
+    await redisClient.hSet('password', userName, requestHashedPassword ); //Storing password and username in Redis
 
-
+    response.status (200); //200 means Ok
+    response.send ("Signup successful!");
 
 } //end const signup
 app.post ('/signup', signup);
