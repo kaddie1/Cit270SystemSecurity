@@ -1,0 +1,1 @@
+scp server.cert server.key kadee@kadnode.cit270.com:/tmp
