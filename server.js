@@ -1,7 +1,7 @@
 const express = require ('express');
 const https = require ('https');
 const fs = require ('fs');
-const port =4043; //4043 or 443
+const port =443; //4043 or 443
 const app =express();
 const md5 = require ('md5');
 const bodyParser = require ('body-parser');
@@ -14,7 +14,7 @@ const redisClient= createClient(
   //  port:6379,
     //host: "127.0.0.1"
 
- url: 'redis://default@10.128.0.2:6379', 
+ url: 'redis://default:@10.128.0.2:6379', 
 
 } //end const redisClient
 
