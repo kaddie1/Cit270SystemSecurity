@@ -14,7 +14,8 @@ const redisClient= createClient(
   //  port:6379,
     //host: "127.0.0.1"
 
- url: 'redis://:@10.128.0.2:6379', 
+ // url: 'redis://:@10.128.0.2:6379', internal redis ip
+ url: 'redis://:@kadredis.cit270.com:6379', 
 
 } //end const redisClient
 
