@@ -71,5 +71,5 @@ spec:
   type: LoadBalancer
   ports:
   - port: 443
-    target: 443
+    targetPort: 443
     
