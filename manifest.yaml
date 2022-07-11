@@ -70,6 +70,6 @@ spec:
     app: kadeen-cit270
   type: LoadBalancer
   ports:
-  - port: 80
-    target: 3000
+  - port: 443
+    target: 443
     
