@@ -1,7 +1,7 @@
 const express = require ('express');
 const https = require ('https');
 const fs = require ('fs');
-const port =443; //4043 or 443
+const port =3000; 
 const app =express();
 const md5 = require ('md5');
 const bodyParser = require ('body-parser');
@@ -33,19 +33,23 @@ app.use (bodyParser.json()); //use the middleware (call it before anything else 
 // } // end await redisClient.connect ();
 // )   //listening  
 
-https.createServer (   //create the server
-    {
-    key: fs.readFileSync ('server.key'),
-    cert: fs.readFileSync ('server.cert'),
-    passphrase: 'P@ssw0rd'
-    },
-    app).listen(port, async() =>
-    {
-        await redisClient.connect(); //creating a TCP socket with Redis
-        console.log ("listening on port: "+port);
+// https.createServer (   //create the server
+//     {
+//     key: fs.readFileSync ('server.key'),
+//     cert: fs.readFileSync ('server.cert'),
+//     passphrase: 'P@ssw0rd'
+//     },
+//     app).listen(port, async() =>
+//     {
+//         await redisClient.connect(); //creating a TCP socket with Redis
+//         console.log ("listening on port: "+port);
         
-    })
+//     })
 
+app.listen(port, async()=>{
+    await redisClient.connect();
+    console.log('Listening on port: ', port);
+});
 
 const validatePassword =async (request, response) => 
 {
