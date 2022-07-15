@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: kadeen-ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-cluster-issuer"
+spec:
+  tls:
+  - hosts: kadkubernetes.cit270.com
+    -
+    secretName: kadeen-tls
+  rules:
+  - host: kadkubernetes.cit270.com
+    http:
+      paths:
+      - backend
+          serviceName: kadeen-cit270-loadbalancer
+          servicePort: 80
